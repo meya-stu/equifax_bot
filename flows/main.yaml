@@ -11,12 +11,20 @@ states:
     nav_benefits:
         flow: benefits_flow
         return: true
+    nav_timesheets:
+        flow: timesheets_flow
+        return: true
     faq_correct_time_off:
-        component: meya.card
+        component: meya.text
         properties:
-            title: '{{cms.faq_outputs.faq_correct_time_off_title}}' 
             text: '{{cms.faq_outputs.faq_correct_time_off}}'            
         return: true
+    # faq_correct_time_off:
+    #     component: meya.card
+    #     properties:
+    #         title: '{{cms.faq_outputs.faq_correct_time_off_title}}' 
+    #         text: '{{cms.faq_outputs.faq_correct_time_off}}'            
+    #     return: true
     faq_qualifying_life_event:
         component: meya.card
         properties:
