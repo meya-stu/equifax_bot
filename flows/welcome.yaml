@@ -1,4 +1,5 @@
 triggers:
+  - type: meya.start_chat
   - type: meya.greetings
 name: welcome
 states:
@@ -9,25 +10,24 @@ states:
         delay:
             relative: 2
     call_to_action:
-        component: meya.api_ai
+        component: meya.input_cms
         properties:
             text: '{{cms.greetings.call_to_action}}'
-            client_access_token: 5eb2a7b1a13340ee8e216e51e9db38d2
-            language: en
-            error_message: I don't understand
-            min_confidence: 0.8
+            space: "navigation_nlp"
+            key: "benefits"
             require_match: false
+            min_confidence: 0.8
+            detect_language: true
         transitions:
-            bad: bad_state
             benefits: benefits_state
-            no_match: ambiguous_state
-    bad_state:
+            no_match: navigation_undetected1
+    navigation_undetected1:
         component: meya.text
         properties:
             text: Bad
         return: true
     benefits_state:
-        flow: benefits
+        flow: benefits_flow
         properties:
             text: Good
         return: true
