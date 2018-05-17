@@ -1,0 +1,31 @@
+triggers:
+  - type: meya.api_ai
+    properties:
+        client_access_token: 5eb2a7b1a13340ee8e216e51e9db38d2
+        language: en
+        # intent: benefits
+        min_confidence: 0.6
+name: main
+route: true
+states:
+    nav_benefits:
+        flow: benefits_flow
+        return: true
+    faq_correct_time_off:
+        component: meya.card
+        properties:
+            title: '{{cms.faq_outputs.faq_correct_time_off_title}}' 
+            text: '{{cms.faq_outputs.faq_correct_time_off}}'            
+        return: true
+    faq_qualifying_life_event:
+        component: meya.card
+        properties:
+            title: '{{cms.faq_outputs.faq_qualifying_life_event_title}}'
+            text: '{{cms.faq_outputs.faq_qualifying_life_event}}'            
+        return: true
+    faq_disengagement_w2:
+        component: meya.card
+        properties:
+            title: '{{cms.faq_outputs.faq_disengagement_w2_title}}'
+            text: '{{cms.faq_outputs.faq_disengagement_w2}}'            
+        return: true
