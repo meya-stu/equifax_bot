@@ -1,0 +1,13 @@
+-   io: output
+    key: call_to_action
+    language: en
+    tag: ''
+    type: string
+    value: What can I help you with today?
+-   io: output
+    key: opening_line
+    language: en
+    tag: ''
+    type: string
+    value: Hi!  Thanks for visiting the site.  My name is Lucy and I'm here to help
+        with your Human Resources questions.

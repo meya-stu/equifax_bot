@@ -1,0 +1,2 @@
+-   flow: dummy_flow
+    intent: meya.start_chat

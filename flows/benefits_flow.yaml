@@ -1,0 +1,20 @@
+name: benefits_flow
+states:
+    main_benefits_areas_state:
+        component: meya.text_buttons
+        properties:
+            text: "{{cms.benefits.first_question}}"
+            output: benefits_area
+            buttons:
+                - text: Health & Dental
+                  action: next
+                  data:
+                    foo: bar
+                - text: Extended Benefits
+                  action: next
+                - text: Long Term Disability
+                  action: next
+    next_state:
+        component: meya.text
+        properties:
+            text: You clicked {{ flow.benefits_area }}

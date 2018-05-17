@@ -1,0 +1,33 @@
+triggers:
+  - type: meya.greetings
+name: welcome
+states:
+    opening_line:
+        component: meya.text
+        properties:
+            text: '{{cms.greetings.opening_line}}'
+        delay:
+            relative: 2
+    call_to_action:
+        component: meya.api_ai
+        properties:
+            text: '{{cms.greetings.call_to_action}}'
+            client_access_token: 5eb2a7b1a13340ee8e216e51e9db38d2
+            language: en
+            error_message: I don't understand
+            min_confidence: 0.8
+            require_match: false
+        transitions:
+            bad: bad_state
+            benefits: benefits_state
+            no_match: ambiguous_state
+    bad_state:
+        component: meya.text
+        properties:
+            text: Bad
+        return: true
+    benefits_state:
+        flow: benefits
+        properties:
+            text: Good
+        return: true
