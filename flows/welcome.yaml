@@ -8,31 +8,12 @@ states:
         properties:
             text: '{{cms.greetings.opening_line}}'
         delay:
-            relative: 2
+            relative: 1
     call_to_action_prompt:
         component: meya.text
         properties:
             text: '{{cms.greetings.call_to_action}}'
-    call_to_action_input:
-        component: meya.input_cms
-        properties:
-            text: ''
-            space: "navigation_nlp"
-            key: "benefits"
-            require_match: false
-            min_confidence: 0.8
-            detect_language: true
-        transitions:
-            benefits: benefits_state
-            no_match: navigation_undetected1
-    navigation_undetected1:
-        component: meya.text
-        properties:
-            text: "Sorry I didn't understand.  Try saying something like...."
-        transitions:
-            next: call_to_action_input
-    benefits_state:
-        flow: benefits_flow
-        properties:
-            text: Good
         return: true
+    # call_to_action_input:
+    #     flow: main
+    #     return: true
