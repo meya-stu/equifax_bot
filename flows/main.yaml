@@ -3,7 +3,6 @@ triggers:
     properties:
         client_access_token: 5eb2a7b1a13340ee8e216e51e9db38d2
         language: en
-        # intent: benefits
         min_confidence: 0.6
 name: main
 route: true

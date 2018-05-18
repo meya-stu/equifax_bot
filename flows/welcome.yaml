@@ -1,6 +1,5 @@
 triggers:
   - type: meya.start_chat
-  - type: meya.greetings
 name: welcome
 states:
     opening_line:
@@ -14,6 +13,3 @@ states:
         properties:
             text: '{{cms.greetings.call_to_action}}'
         return: true
-    # call_to_action_input:
-    #     flow: main
-    #     return: true
