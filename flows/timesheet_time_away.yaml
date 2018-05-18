@@ -14,7 +14,7 @@ states:
         component: meya.text_buttons
         properties:
             text: "First open our timesheet application in a new window (here's the link if you don't have it <insert intranet link>)"
-            output: time_sheet_work_or_timeoff
+            output: got_it
             buttons:
                 - text: "Got it"
                   action: next
@@ -24,7 +24,7 @@ states:
         component: meya.text_buttons
         properties:
             text: "Now choose 'Correct Time Off'"
-            output: time_sheet_work_or_timeoff
+            output: got_it
             buttons:
                 - text: "Got it"
                   action: next
@@ -34,7 +34,7 @@ states:
         component: meya.text_buttons
         properties:
             text: "Were you looking to delete an entry, or simply change what type the entry is logged as?"
-            output: time_sheet_work_or_timeoff
+            output: deletion_or_type_changae
             buttons:
                 - text: "Delete please!"
                   action: delete_entry
@@ -44,19 +44,35 @@ states:
             delete_entry: delete_entry
             change_entry_type: change_entry_type
     delete_entry:
-        component: meya.text
+        component: meya.text_buttons
         properties:
-            text: "FULL DELETE"
+            text: "No problem.  You can completely remove a time entry by clicking on the '-' sign beside it."
+            output: got_it
+            buttons:
+                - text: "I did it"
+                  action: next
         delay:
             relative: 2
         transitions:
-            next: request_feedback
+            next: change_made
     change_entry_type:
+        component: meya.text_buttons
+        properties:
+            text: "If your time-off type was incorrect you can check the box beside the incorrect entry, and choose the correct time off type from the drop down menu. "
+            output: got_it
+            buttons:
+                - text: "I did it"
+                  action: next
+        delay:
+            relative: 5
+        transitions:
+            next: change_made
+    change_made:
         component: meya.text
         properties:
-            text: "CORRECT TYPE"
+            text: "After you complete your timesheet change, choose 'Continue' and then 'Submit' to send the correction to your manager."
         delay:
-            relative: 2
+            relative: 5
         transitions:
             next: request_feedback
     request_feedback:

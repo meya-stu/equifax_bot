@@ -2,7 +2,7 @@ triggers:
   - type: meya.keyword
     properties:
         ignorecase: true
-        keyword: _cto_wo_
+        keyword: _cto_wh_
 states:
     work_hours:
         component: meya.text
@@ -30,5 +30,7 @@ states:
             relative: 5
     request_feedback:
         component: meya.pass
+        delay:
+            relative: 5
         returne: true
 
