@@ -53,11 +53,10 @@ states:
             time_away: say_time_away
             work_hours: goto_timesheet_work_hours
 
-    say_time_away:
-        component: meya.text
-        properties:
-            text: "{{ cms.time_off.time_away }}"
-        return: true
+    time_away:
+        flow: timesheet_time_away
+        transitions:
+            request_feedback: request_feedback
 
     goto_timesheet_work_hours:
         flow: timesheet_work_hours
