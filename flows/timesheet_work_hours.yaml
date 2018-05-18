@@ -1,0 +1,34 @@
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: _cto_wo_
+states:
+    work_hours:
+        component: meya.text
+        properties:
+            text: "Alright, I can help you correct your work hours 😀"
+        delay:
+            relative: 2
+    work_hours2:
+        component: meya.text
+        properties:
+            text: "From the timesheets app <insert link> you'll double click the incorrect time block."
+        delay:
+            relative: 1
+    work_hours3:
+        component: meya.text
+        properties:
+            text: "Enter the corrected information... "
+        delay:
+            relative: 2
+    work_hours4:
+        component: meya.text
+        properties:
+            text: "When you're all done you'll click to submit your timesheet for manager approval."
+        delay:
+            relative: 5
+    request_feedback:
+        component: meya.pass
+        returne: true
+
