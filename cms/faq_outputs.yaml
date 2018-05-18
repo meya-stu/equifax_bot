@@ -1,12 +1,4 @@
 -   io: output
-    key: opening
-    language: en
-    value: Okay, let's make changes to your timesheet 🕖
--   io: output
-    key: explain_rules
-    language: en
-    value: You have the ability to edit your time unless timesheets are locked for payroll processing (from the timesheet deadline for the period until the following Wednesday morning).
--   io: output
     key: faq_correct_time_off
     language: en
     tag: "faq"
