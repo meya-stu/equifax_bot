@@ -1,0 +1,32 @@
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: _cto_
+states:
+    opening:
+        component: meya.text
+        properties:
+            text: "Ok. Sounds like you need to make changes to your timesheet 🕖.  I'd be happy to help you with that."
+    calculate_date: # This is the date after which an employee can't make changes themselves
+        component: timesheet_cutoff
+    print_cutoff:
+        component: meya.text
+        properties:
+            text: "Cutoff is {{flow.timesheet_date_cutoff}}"
+    before_or_after_state:
+        component: meya.text_buttons
+        properties:
+            text: "First I'll need to know which period you're referring to."
+            output: time_sheet_before_or_after
+            buttons:
+                - text: "On or before {{flow.timesheet_date_cutoff}}"
+                  action: next
+                  data:
+                    foo: bar
+                - text: "After {{flow.timesheet_date_cutoff}}"
+                  action: next
+    next_state:
+        component: meya.text
+        properties:
+            text: "You clicked {{ flow.time_sheet_before_or_after }}"

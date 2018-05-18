@@ -15,9 +15,7 @@ states:
         flow: timesheets_flow
         return: true
     faq_correct_time_off:
-        component: meya.text
-        properties:
-            text: '{{cms.faq_outputs.faq_correct_time_off}}'            
+        flow: correct_time_off
         return: true
     # faq_correct_time_off:
     #     component: meya.card
