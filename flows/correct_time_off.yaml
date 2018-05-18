@@ -47,35 +47,15 @@ states:
             time_away: time_away
             work_hours: work_hours
     time_away:
-        component: meya.text
+        component: me ya.text
         properties:
             text: "Lets correct your time away"
         return: true
     work_hours:
-        component: meya.text
-        properties:
-            text: "Alright, I can help you can correct your work hours 😀"
-        delay:
-            relative: 2
-    work_hours2:
-        component: meya.text
-        properties:
-            text: "From the timesheets app <insert link> you'll double click the incorrect time block."
-        delay:
-            relative: 1
-    work_hours3:
-        component: meya.text
-        properties:
-            text: "Enter the corrected information... "
-        delay:
-            relative: 2
-    work_hours4:
-        component: meya.text
-        properties:
-            text: "When you're all done you'll click to submit your timesheet for manager approval."
-        delay:
-            relative: 5
-    work_hours5:
+        flow: timesheet_work_hours
+        transitions:
+            request_feedback: request_feedback
+    request_feedback:
         component: meya.text_buttons
         properties:
             text: "Did I answer your question for you?"
