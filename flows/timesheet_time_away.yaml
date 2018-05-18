@@ -11,11 +11,25 @@ states:
         delay:
             relative: 2
     time_off2:
-        component: meya.text
+        component: meya.text_buttons
         properties:
             text: "First open our timesheet application in a new window (here's the link if you don't have it <insert intranet link>)"
-        delay:
-            relative: 2
+            output: time_sheet_work_or_timeoff
+            buttons:
+                - text: "Got it"
+                  action: next
+        transitions:
+            next: time_off3
+    time_off3:
+        component: meya.text_buttons
+        properties:
+            text: "Now choose 'Correct Time Off'"
+            output: time_sheet_work_or_timeoff
+            buttons:
+                - text: "Got it"
+                  action: next
+        transitions:
+            next: correction_type
     correction_type:
         component: meya.text_buttons
         properties:
