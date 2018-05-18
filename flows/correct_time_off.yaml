@@ -47,10 +47,9 @@ states:
             time_away: time_away
             work_hours: work_hours
     time_away:
-        component: meya.text
-        properties:
-            text: "Lets correct your time away"
-        return: true
+        flow: timesheet_time_away
+        transitions:
+            request_feedback: request_feedback
     work_hours:
         flow: timesheet_work_hours
         transitions:

@@ -1,0 +1,53 @@
+triggers:
+  - type: meya.keyword
+    properties:
+        ignorecase: true
+        keyword: _cto_ta_
+states:
+    time_off:
+        component: meya.text
+        properties:
+            text: "Alright, let's adjust your timesheet for time off 📆"
+        delay:
+            relative: 2
+    time_off2:
+        component: meya.text
+        properties:
+            text: "First open our timesheet application in a new window (here's the link if you don't have it <insert intranet link>)"
+        delay:
+            relative: 2
+    correction_type:
+        component: meya.text_buttons
+        properties:
+            text: "Were you looking to delete an entry, or simply change what type the entry is logged as?"
+            output: time_sheet_work_or_timeoff
+            buttons:
+                - text: "Delete please!"
+                  action: delete_entry
+                - text: "Just fix the type"
+                  action: change_entry_type
+        transitions:
+            delete_entry: delete_entry
+            change_entry_type: change_entry_type
+    delete_entry:
+        component: meya.text
+        properties:
+            text: "FULL DELETE"
+        delay:
+            relative: 2
+        transitions:
+            next: request_feedback
+    change_entry_type:
+        component: meya.text
+        properties:
+            text: "CORRECT TYPE"
+        delay:
+            relative: 2
+        transitions:
+            next: request_feedback
+    request_feedback:
+        component: meya.pass
+        returne: true
+
+    
+
