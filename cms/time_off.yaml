@@ -1,0 +1,40 @@
+-   io: output
+    key: intro
+    language: en
+    value: Okay, let's make changes to your timesheet 🕖
+-   io: output
+    key: rules
+    language: en
+    value: You have the ability to edit your time unless timesheets are locked for payroll processing (from the timesheet deadline for the period until the following Wednesday morning).
+-   io: output
+    key: ask_pay_period
+    language: en
+    value: In what pay period do you need to make a change?
+-   io: output
+    key: before_cutoff
+    language: en
+    value: No problem.  I can walk you through how to make a timesheet change.
+-   io: output
+    key: before_cutoff_time_type
+    language: en
+    value: What kind of time entry are you looking to fix?
+-   io: output
+    key: time_away
+    language: en
+    value: Lets correct your time away
+-   io: output
+    key: ask_feedback
+    language: en
+    value: Did I answer your question for you?
+-   io: output
+    key: feedback_positive
+    language: en
+    value: That's great to hear!
+-   io: output
+    key: feedback_negative
+    language: en
+    value: I'm sorry to hear!
+-   io: output
+    key: after_cutoff
+    language: en
+    value: Let me connect you with our support team to help.
