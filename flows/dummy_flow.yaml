@@ -1,5 +1,0 @@
-triggers:
-  - type: meya.start_chat
-name: dummy_flow
-states:
-    first:
