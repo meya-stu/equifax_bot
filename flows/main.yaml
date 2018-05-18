@@ -11,9 +11,6 @@ states:
     nav_benefits:
         flow: benefits_flow
         return: true
-    nav_timesheets:
-        flow: timesheets_flow
-        return: true
     faq_correct_time_off:
         flow: correct_time_off
         return: true
