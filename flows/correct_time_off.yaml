@@ -10,23 +10,26 @@ states:
             text: "Ok. Sounds like you need to make changes to your timesheet 🕖.  I'd be happy to help you with that."
     calculate_date: # This is the date after which an employee can't make changes themselves
         component: timesheet_cutoff
-    print_cutoff:
-        component: meya.text
-        properties:
-            text: "Cutoff is {{flow.timesheet_date_cutoff}}"
     before_or_after_state:
         component: meya.text_buttons
         properties:
-            text: "First I'll need to know which period you're referring to."
+            text: "In what pay period do you need to make a change?"
             output: time_sheet_before_or_after
             buttons:
-                - text: "On or before {{flow.timesheet_date_cutoff}}"
-                  action: next
-                  data:
-                    foo: bar
-                - text: "After {{flow.timesheet_date_cutoff}}"
-                  action: next
-    next_state:
+                - text: "Ending on or before {{flow.timesheet_date_cutoff}}"
+                  action: after_cutoff
+                - text: "Current pay period or later."
+                  action: before_cutoff
+        transitions:
+            after_cutoff: after_cutoff
+            before_cutoff: before_cutoff
+    before_cutoff:
         component: meya.text
         properties:
-            text: "You clicked {{ flow.time_sheet_before_or_after }}"
+            text: "No problem.  I can walk you through how to make a timesheet change."
+        return: true
+    after_cutoff:
+        component: meya.text
+        properties:
+            text: "Let me connect you with our support team to help."
+        return: true
