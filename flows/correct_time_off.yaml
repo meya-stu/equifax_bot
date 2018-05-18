@@ -3,23 +3,27 @@ triggers:
     properties:
         ignorecase: true
         keyword: _cto_
+name: correct_time_off
 states:
-    opening:
+    say_opening:
         component: meya.text
         properties:
-            text: "Ok. Sounds like you need to make changes to your timesheet 🕖.  I'd be happy to help you with that."
+            text: "{{ cms.time_off.intro }}"
         delay:
             relative: 1
-    explain_rules:
+    
+    say_rules:
         component: meya.text
         properties:
-            text: "You have the ability to edit your time unless timesheets are locked for payroll processing (from the timesheet deadline for the period until the following Wednesday morning)"
+            text: "{{ cms.time_off.rules }}"
+
     calculate_date: # This is the date after which an employee can't make changes themselves
         component: timesheet_cutoff
-    before_or_after_state:
+
+    ask_pay_period:
         component: meya.text_buttons
         properties:
-            text: "In what pay period do you need to make a change?"
+            text: "{{ cms.time_off.ask_pay_period }}"
             output: time_sheet_before_or_after
             buttons:
                 - text: "Ending on or before {{flow.timesheet_date_cutoff}}"
@@ -27,37 +31,42 @@ states:
                 - text: "Current pay period or later."
                   action: before_cutoff
         transitions:
-            after_cutoff: after_cutoff
-            before_cutoff: before_cutoff_opening
-    before_cutoff_opening:
+            after_cutoff: say_after_cutoff
+            before_cutoff: say_before_cutoff
+
+    say_before_cutoff:
         component: meya.text
         properties:
-            text: "No problem.  I can walk you through how to make a timesheet change."
-    before_cutoff_time_type:
+            text: "{{ cms.time_off.before_cutoff }}"
+
+    say_before_cutoff_time_type:
         component: meya.text_buttons
         properties:
-            text: "What kind of time entry are you looking to fix?"
+            text: "{{ cms.time_off.before_cutoff_time_type }}"
             output: time_sheet_work_or_timeoff
             buttons:
-                - text: "Time away from work (vacation, bereavement)"
+                - text: "Time away from work (e.g. vacation, bereavement)"
                   action: time_away
                 - text: "Work hours"
                   action: work_hours
         transitions:
-            time_away: time_away
-            work_hours: work_hours
+            time_away: say_time_away
+            work_hours: goto_timesheet_work_hours
+
     time_away:
         flow: timesheet_time_away
         transitions:
             request_feedback: request_feedback
-    work_hours:
+
+    goto_timesheet_work_hours:
         flow: timesheet_work_hours
         transitions:
             request_feedback: request_feedback
-    request_feedback:
+
+    ask_feedback:
         component: meya.text_buttons
         properties:
-            text: "Did I answer your question for you?"
+            text: "{{ cms.time_off.ask_feedback }}"
             output: time_sheet_feedback
             buttons:
                 - text: "Yes!"
@@ -65,24 +74,27 @@ states:
                 - text: "No, I still need help 😟"
                   action: no
         transitions:
-            yes: yes_feedback_state
-            no: no_feedback_state
-    yes_feedback_state:
+            yes: yes_feedback
+            no: no_feedback
+
+    yes_feedback:
         component: meya.text
         properties:
-            text: "That's great to hear!"
+            text: "{{ cms.time_off.feedback_positive }}"
         delay:
             relative: 1
         return: true
-    no_feedback_state:
+
+    no_feedback:
         component: meya.text
         properties:
-            text: "I'm sorry to hear!"
+            text: "{{ cms.time_off.feedback_negative }}"
         delay:
             relative: 1
         return: true
-    after_cutoff:
+
+    say_after_cutoff:
         component: meya.text
         properties:
-            text: "Let me connect you with our support team to help."
+            text: "{{ cms.time_off.after_cutoff }}"
         return: true
