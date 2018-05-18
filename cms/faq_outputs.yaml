@@ -4,10 +4,10 @@
     tag: "faq"
     type: string
     value: >
-      You have the ability to edit your time unless timesheets are locked for payroll processing (from the timesheet deadline for the period until the following Wednesday morning).
-      To correct time worked, double click the incorrect time block and enter the correct information. Submit the timesheet for manager approval. 
-      For time off, choose “Correct Time Off” from the “Time” worklet.
-      Click on the time block that requires adjustment. If the time-off type was incorrect, check the box beside the incorrect entry, and choose the correct time off type from the drop down menu. 
+      You can edit your time unless timesheets have been locked for payroll processing. Timesheets are locked from the timesheet deadline for the pay period until the following Wednesday morning.
+      To correct *time worked*, double click the incorrect time block and enter the correct information. Submit the timesheet for manager approval.
+      For *time off*, choose “Correct Time Off” from the “Time” worklet.
+      Click on the time block that requires adjustment. If the time off type was incorrect, check the box beside the incorrect entry, and choose the correct time off type from the drop down menu. 
       If the time off needs to be removed entirely, simply click the “-“ beside the row to remove the request.
       After making the appropriate change, choose “Continue” and then “Submit” to send the correction to your manager for approval.
 -   io: output
@@ -23,7 +23,7 @@
     type: string
     value: >
       Did you recently get married, have a baby, or turn 26-years-old? If so, you’ve experienced a qualifying life event and are eligible to change your benefit elections.
-      You have 31 days from the date of the event to enroll for new coverage and submit required documentation to the HR People Services.
+      You have 31 days from the date of the event to enroll for new coverage and submit required documentation to HR People Services.
       If you do not update your benefit elections within 31 days, you will have to wait until the next Annual Enrollment period to change your benefits.
         Additional qualifying life events may include...
         Marriage
@@ -43,7 +43,7 @@
     tag: "faq"
     type: string
     value: >
-      Make sure your address on file is correct, so that we can send you your W2 and a copy of your final pay stub (no need to request, they are sent automatically).
+      Make sure your address on file is correct so that we can send you your W2 and a copy of your final pay stub. You do not need to request a W2 or final pay stub, they are sent automatically.
 -   io: output
     key: faq_disengagement_w2_title
     language: en
